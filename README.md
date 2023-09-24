@@ -1,13 +1,14 @@
 # Simple TCP Echo Server and Client with Timestamp
 
-- [Project Description](#description)
-- [Server](#server)
-  - [Description](#description-1)
-- [Client](#client)
-  - [Description](#description-2)
-- [Compilation and Usage](#compilation-and-usage)
-- [Order to run the two server-client commands](#order-to-run-the-two-server-client-commands)
-- [Note](#note)
+- [Simple TCP Echo Server and Client with Timestamp](#simple-tcp-echo-server-and-client-with-timestamp)
+  - [Project Description](#project-description)
+  - [Server](#server)
+    - [Description](#description)
+  - [Client](#client)
+    - [Description](#description-1)
+  - [Compilation and Usage](#compilation-and-usage)
+  - [Order to run the two server-client commands](#order-to-run-the-two-server-client-commands)
+  - [Note](#note)
 
 ## Project Description
 This project was made for assignment purposes for CSCD58 @ University Of Toronto
@@ -61,11 +62,13 @@ Where `<Server IP Address>` with the actual IP address of the server (ex: ``127.
 
 1. Start the server by running the compiled server binary.
 2. Start the client by running the compiled client binary with the server's IP address.
-3. The client will prompt the user to enter a message. Type a message and press Enter to send it to the server.
+3. The client will prompt the user to enter a message. Type a message and press Enter to send it to the server. See [Note](#note) for information about input.
 4. The server will respond with the sent message with the current timestamp that the message was read by the server.
 5. Repeat steps 3, 4 to continue the communication between the server and the client
 6. To end the communication, type "Ciao-Ciao" at the client prompt and press Enter. The server will close the connection, and both the client and server will terminate.
 
 ## Note
 
-Make sure that the server is running and reachable from the client machine and that there are no firewall rules blocking the communication on the used port (9999 by default). If one chooses to change the port of the server, you must ensure that the port in the client and server match.
+- Make sure that the server is running and reachable from the client machine and that there are no firewall rules blocking the communication on the used port (9999 by default). 
+- If one chooses to change the port of the server, you must ensure that the port (`SERVER_PORT` variable) in the client and server match. 
+- If one chooses to change the max line length for the buffer, you must ensure that the buffer length (`MAX_LINE` variable) in the client and server match.
