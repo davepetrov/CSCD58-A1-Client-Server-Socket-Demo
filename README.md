@@ -1,16 +1,15 @@
 # Simple TCP Echo Server and Client with Timestamp
 
-- [Simple TCP Echo Server and Client with Timestamp](#simple-tcp-echo-server-and-client-with-timestamp)
-  - [Description](#description)
-  - [Server](#server)
-    - [Description](#description-1)
-  - [Client](#client)
-    - [Description](#description-2)
-  - [Compilation and Usage](#compilation-and-usage)
-  - [Order to run the two server-client commands](#order-to-run-the-two-server-client-commands)
-  - [Note](#note)
+- [Project Description](#description)
+- [Server](#server)
+  - [Description](#description-1)
+- [Client](#client)
+  - [Description](#description-2)
+- [Compilation and Usage](#compilation-and-usage)
+- [Order to run the two server-client commands](#order-to-run-the-two-server-client-commands)
+- [Note](#note)
 
-## Description
+## Project Description
 This project was made for assignment purposes for CSCD58 @ University Of Toronto
 
 This project consists of a simple TCP server and a TCP client. The server listens for incoming connections and echoes back any received message appended with the current timestamp. The client can connect to the server, send messages, and receive the echoed messages with timestamps.
@@ -19,7 +18,7 @@ This project consists of a simple TCP server and a TCP client. The server listen
 
 ### Description
 
-The server listens on a predefined port (configurable within the client and server source files) and waits for incoming client connections. Upon establishing a connection, it enters into a communication loop where it receives messages from the connected client, appends the current timestamp to each received message, and sends it back. The communication continues until the client sends the message "Ciao-Ciao", prompting the server to close the connection.
+The server listens on a predefined port (configurable within the client and server source files) and waits for incoming client connections. Upon establishing a connection, it enters into a communication loop where the server receives messages from the connected client, adds the current timestamp to each received message, and sends it back to the client. The communication continues until the client sends the message "Ciao-Ciao", letting the server known to close the connection.
 
 ## Client
 

@@ -13,30 +13,30 @@
 #define MAX_PENDING 5
 
 int main() {
-    int s, client_fd;
+    int server_fd, client_fd;
     struct sockaddr_in sin;
     char buffer[MAX_LINE];
 
-    // Initialize sin memory
+    // Construct addr data struct.
     bzero((char *)&sin, sizeof(sin));
-    sin.sin_family = AF_INET;
+    sin.sin_family = PF_INET;
     sin.sin_addr.s_addr = INADDR_ANY;
     sin.sin_port = htons(SERVER_PORT);
     
     // create socket descriptor (PF_INET + SOCK_STREAM = TCP protocol)
-    if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    if ((server_fd = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
         perror("socket failed");
         exit(1);
     }
     
     // associate the local address
-    if (bind(s, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
+    if (bind(server_fd, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
         perror("bind failed");
         exit(1);
     }
     
     // wait for incoming connections from clients
-    listen(s, MAX_PENDING);
+    listen(server_fd, MAX_PENDING);
     
     printf("Server is listening on port %d\n", SERVER_PORT);
     
@@ -44,7 +44,7 @@ int main() {
     while (1){
         socklen_t len = sizeof(sin);
         // accept incoming connection
-        if ((client_fd = accept(s, (struct sockaddr *)&sin, &len)) < 0) {
+        if ((client_fd = accept(server_fd, (struct sockaddr *)&sin, &len)) < 0) {
             perror("accept");
             exit(1);
         }
@@ -83,6 +83,6 @@ int main() {
     
     // close the server socket file descriptor
     close(client_fd);
-    close(s);
+    close(server_fd);
     exit(0);
 }

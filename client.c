@@ -4,7 +4,6 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <arpa/inet.h> // For inet_pton
 #include <unistd.h> // For close()
 
 #define SERVER_PORT 9999
@@ -24,6 +23,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
+    // Construct addr data struct.
     memset((char *)&sin, 0, sizeof(sin));
     sin.sin_family = PF_INET;
     // convert network byte order
